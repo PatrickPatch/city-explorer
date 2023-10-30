@@ -15,7 +15,7 @@ function App() {
     event.preventDefault();
 
     const API =
-      "httlps://eu1.locationiq.com/v1/search?q${search}&key=${API_KEY}&format=json";
+      "https://eu1.locationiq.com/v1/search?q${search}&key=${API_KEY}&format=json";
 
     const res = await axios.get(API);
 
