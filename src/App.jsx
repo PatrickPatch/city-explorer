@@ -1,6 +1,6 @@
-import { useState } from "react";
-import axios from "axios";
 import "./App.css";
+import axios from "axios";
+import { useState } from "react";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -11,11 +11,11 @@ function App() {
   function handleChange(event) {
     setSearch(event.target.value);
   }
+
   async function getLocation(event) {
     event.preventDefault();
 
-    const API =
-      "https://eu1.locationiq.com/v1/search?q${search}&key=${API_KEY}&format=json";
+    const API = `https://eu1.locationiq.com/v1/search?q=${search}&key=${API_KEY}&format=json`;
 
     const res = await axios.get(API);
 
