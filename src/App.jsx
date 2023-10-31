@@ -7,6 +7,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 function App() {
   const [location, setLocation] = useState({});
   const [search, setSearch] = useState("");
+  const [number, setNumber] = useState(10);
 
   function handleChange(event) {
     setSearch(event.target.value);
@@ -21,6 +22,9 @@ function App() {
 
     setLocation(res.data[0]);
   }
+  function handleNumber(mod) {
+    setNumber(number + mod);
+  }
   return (
     <>
       <h1>APIs</h1>
@@ -29,6 +33,17 @@ function App() {
         <button>Get Location</button>
       </form>
 
+      {location.lat && (
+        <div>
+          <button onClick={() => handleNumber(-1)}>-</button>
+          <span>{number}</span>
+          <button onClick={() => handleNumber(+1)}>+</button>
+
+          <img
+            src={`https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${location.lat},${location.lon}&zoom=${number}&format=png`}
+          />
+        </div>
+      )}
       <h2>{location.display_name}</h2>
     </>
   );
